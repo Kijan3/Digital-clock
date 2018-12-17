@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Clock</title>
+ <style>
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   background-color: rgb(44, 66, 26);
+  }
+  .container {
+   margin: 0 auto;
+   position: relative;
+   width: 90vw;
+   height: 30vw;
+   top: 35vh;
+  }
+  .number {
+   position: absolute;
+   width: 50%;
+   height: 100%;
+  }
+  .number:nth-child(2) {
+   left: 50%;
+  }
+  .hour {
+   position: absolute;
+   width: 30%;
+   height: 100%;
+  }
+  .pOne {
+   position: absolute;
+   width: 5%;
+   height: 100%;
+   left: 30%;
+  }
+  .points {
+    position: absolute;
+    width: 80%;
+    height: 4vw;
+    border-radius: 50%;
+    left: 10%;
+    background-color: rgba(0, 0, 0);
+    opacity: 0.1;
+    animation: sec 500ms alternate infinite;
+    transition: all linear ;
+  }
+  @keyframes sec {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .pTop {
+    top: 20%;
+  }
+  .pBottom {
+    top: 50%
+  }
+  .minute {
+   position: absolute;
+   width: 30%;
+   height: 100%;
+   left: 35%;
+  }
+  .pTwo {
+   position: absolute;
+   width: 5%;
+   height: 100%;
+   left: 65%;
+  }
+  .second {
+   position: absolute;
+   width: 30%;
+   height: 100%;
+   left: 70%;
+  }
+  .bar {
+    width: 68%;
+    height: 12%;
+    position: absolute;
+    background-color: rgba(0, 0, 0);
+    opacity: 0.1;
+    clip-path: polygon(0 50%, 20% 0, 80% 0, 100% 50%, 80% 100%, 20% 100%)
+  }
+  .active {
+    opacity: 1;
+  }
+  .hourOne {
+    left: 15.5%;
+    top: 2%;
+  }
+  .hourTwo {
+    transform: rotate(90deg);
+    left: 50%;
+    top: 19%;
+  }
+  .hourThree {
+    transform: rotate(90deg);
+    left: -19%;
+    top: 19%;
+  }
+  .hourFour {
+    left: 15.5%;
+    top: 36%;
+  }
+ .hourFive {
+    transform: rotate(90deg);
+    left: 50%;
+    top: 53%;
+  }
+  .hourSix {
+    transform: rotate(90deg);
+    left: -19%;
+    top: 53%;
+  }
+  .hourSeven {
+    left: 15.5%;
+    top: 70%;
+  }
+
+ </style>
+</head>
+<body>
+ <div class="container">
+  <div class="hour">
+    <div class="number digitOne">
+      <div class="bar hourOne ho1">1</div>
+      <div class="bar hourTwo ho2">2</div>
+      <div class="bar hourThree ho3">3</div>
+      <div class="bar hourFour ho4">4</div>
+      <div class="bar hourFive ho5">5</div>
+      <div class="bar hourSix ho6">6</div>
+      <div class="bar hourSeven ho7">7</div>
+    </div>
+    <div class="number digitTwo">
+      <div class="bar hourOne ht1">1</div>
+      <div class="bar hourTwo ht2">2</div>
+      <div class="bar hourThree ht3">3</div>
+      <div class="bar hourFour ht4">4</div>
+      <div class="bar hourFive ht5">5</div>
+      <div class="bar hourSix ht6">6</div>
+      <div class="bar hourSeven ht7">7</div>
+    </div>
+  </div>
+  <div class="point pOne">
+    <div class="points pTop"></div>
+    <div class="points pBottom"></div>
+  </div>
+  <div class="minute">
+    <div class="number minuteOne">
+      <div class="bar hourOne mo1">1</div>
+      <div class="bar hourTwo mo2">2</div>
+      <div class="bar hourThree mo3">3</div>
+      <div class="bar hourFour mo4">4</div>
+      <div class="bar hourFive mo5">5</div>
+      <div class="bar hourSix mo6">6</div>
+      <div class="bar hourSeven mo7">7</div>
+    </div>
+    <div class="number minuteTwo">
+      <div class="bar hourOne mt1">1</div>
+      <div class="bar hourTwo mt2">2</div>
+      <div class="bar hourThree mt3">3</div>
+      <div class="bar hourFour mt4">4</div>
+      <div class="bar hourFive mt5">5</div>
+      <div class="bar hourSix mt6">6</div>
+      <div class="bar hourSeven mt7">7</div>
+    </div>
+  </div>
+  <div class="point pTwo">
+    <div class="points pTop"></div>
+    <div class="points pBottom"></div>
+  </div>
+  <div class="second">
+    <div class="number secondOne">
+      <div class="bar hourOne so1">1</div>
+      <div class="bar hourTwo so2">2</div>
+      <div class="bar hourThree so3">3</div>
+      <div class="bar hourFour so4">4</div>
+      <div class="bar hourFive so5">5</div>
+      <div class="bar hourSix so6">6</div>
+      <div class="bar hourSeven so7">7</div>
+    </div>
+    <div class="number secondTwo">
+      <div class="bar hourOne st1">1</div>
+      <div class="bar hourTwo st2">2</div>
+      <div class="bar hourThree st3">3</div>
+      <div class="bar hourFour st4">4</div>
+      <div class="bar hourFive st5">5</div>
+      <div class="bar hourSix st6">6</div>
+      <div class="bar hourSeven st7">7</div>
+    </div>
+  </div>
+ </div>
+
+ <script>
+  //   =====================================
+  //  hours
+  //  ======================================
+
+   const ho1 = document.querySelector(".ho1");
+   const ho2 = document.querySelector(".ho2");
+   const ho3 = document.querySelector(".ho3");
+   const ho4 = document.querySelector(".ho4");
+   const ho5 = document.querySelector(".ho5");
+   const ho6 = document.querySelector(".ho6");
+   const ho7 = document.querySelector(".ho7");
+   const ht1 = document.querySelector(".ht1");
+   const ht2 = document.querySelector(".ht2");
+   const ht3 = document.querySelector(".ht3");
+   const ht4 = document.querySelector(".ht4");
+   const ht5 = document.querySelector(".ht5");
+   const ht6 = document.querySelector(".ht6");
+   const ht7 = document.querySelector(".ht7");
+
+  //  ======================================
+  // minutes
+  //  ======================================
+
+   const mo1 = document.querySelector(".mo1");
+   const mo2 = document.querySelector(".mo2");
+   const mo3 = document.querySelector(".mo3");
+   const mo4 = document.querySelector(".mo4");
+   const mo5 = document.querySelector(".mo5");
+   const mo6 = document.querySelector(".mo6");
+   const mo7 = document.querySelector(".mo7");
+   const mt1 = document.querySelector(".mt1");
+   const mt2 = document.querySelector(".mt2");
+   const mt3 = document.querySelector(".mt3");
+   const mt4 = document.querySelector(".mt4");
+   const mt5 = document.querySelector(".mt5");
+   const mt6 = document.querySelector(".mt6");
+   const mt7 = document.querySelector(".mt7");
+
+  //  ======================================
+  // SECONDS
+  //  ======================================
+   const so1 = document.querySelector(".so1");
+   const so2 = document.querySelector(".so2");
+   const so3 = document.querySelector(".so3");
+   const so4 = document.querySelector(".so4");
+   const so5 = document.querySelector(".so5");
+   const so6 = document.querySelector(".so6");
+   const so7 = document.querySelector(".so7");
+   const st1 = document.querySelector(".st1");
+   const st2 = document.querySelector(".st2");
+   const st3 = document.querySelector(".st3");
+   const st4 = document.querySelector(".st4");
+   const st5 = document.querySelector(".st5");
+   const st6 = document.querySelector(".st6");
+   const st7 = document.querySelector(".st7");
+
+
+  //  ======================================
+  //  interval 1000ms 
+  //  ======================================
+
+   setInterval(function setClock(){
+    let time = new Date().toString();
+    time = [...time];
+    time1 = time.slice(16, 24);
+    let hour1 = time1[0];
+    let hour2 = time1[1];
+    let minute1 = time1[3];
+    let minute2 = time1[4];
+    let second1 = time1[6];
+    let second2 = time1[7];
+    let bars = document.querySelectorAll(".bar");
+    bars = [...bars];
+
+    function resetClock(){
+      bars.forEach(function(bar) {
+        bar.classList.remove("active");
+      });
+    } resetClock();
+ 
+
+     function setHourOne (){
+     if (hour1 == "" || hour1 == "0") {
+       ho2.classList.add("active");
+       ho3.classList.add("active");
+       ho1.classList.add("active");
+       ho5.classList.add("active");
+       ho6.classList.add("active");
+       ho7.classList.add("active");
+     }
+     else if (hour1 == "1") {
+       ho2.classList.add("active");
+       ho5.classList.add("active");
+     }
+     else if (hour1 == "2") {
+       ho1.classList.add("active");
+       ho2.classList.add("active");
+       ho4.classList.add("active");
+       ho6.classList.add("active");
+       ho7.classList.add("active");
+     }
+     else if (hour1 == "3") {
+       ho1.classList.add("active");
+       ho2.classList.add("active");
+       ho4.classList.add("active");
+       ho5.classList.add("active");
+       ho7.classList.add("active");
+     }
+     else if (hour1 == "4") {
+       ho3.classList.add("active");
+       ho2.classList.add("active");
+       ho4.classList.add("active");
+       ho5.classList.add("active");
+     }
+     else if (hour1 == "5") {
+       ho1.classList.add("active");
+       ho3.classList.add("active");
+       ho4.classList.add("active");
+       ho5.classList.add("active");
+       ho7.classList.add("active");
+     }
+     else if (hour1 == "6") {
+       ho1.classList.add("active");
+       ho3.classList.add("active");
+       ho4.classList.add("active");
+       ho6.classList.add("active");
+       ho7.classList.add("active");
+       ho5.classList.add("active");
+     }
+     else if (hour1 == "7") {
+       ho1.classList.add("active");
+       ho2.classList.add("active");
+       ho5.classList.add("active");
+     }
+     else if (hour1 == "8") {
+       ho1.classList.add("active");
+       ho2.classList.add("active");
+       ho3.classList.add("active");
+       ho4.classList.add("active");
+       ho5.classList.add("active");
+       ho6.classList.add("active");
+       ho7.classList.add("active");
+     }
+     else if (hour1 == "9") {
+       ho1.classList.add("active");
+       ho2.classList.add("active");
+       ho3.classList.add("active");
+       ho4.classList.add("active");
+       ho5.classList.add("active");
+       ho7.classList.add("active");
+     }
+   }
+   setHourOne();
+
+     function setHourTwo (){
+     if (hour2 == "" || hour2 == "0") {
+       ht2.classList.add("active");
+       ht3.classList.add("active");
+       ht1.classList.add("active");
+       ht5.classList.add("active");
+       ht6.classList.add("active");
+       ht7.classList.add("active");
+     }
+     else if (hour2 == "1") {
+       ht2.classList.add("active");
+       ht5.classList.add("active");
+     }
+     else if (hour2 == "2") {
+       ht1.classList.add("active");
+       ht2.classList.add("active");
+       ht4.classList.add("active");
+       ht6.classList.add("active");
+       ht7.classList.add("active");
+     }
+     else if (hour2 == "3") {
+       ht1.classList.add("active");
+       ht2.classList.add("active");
+       ht4.classList.add("active");
+       ht5.classList.add("active");
+       ht7.classList.add("active");
+     }
+     else if (hour2 == "4") {
+       ht3.classList.add("active");
+       ht2.classList.add("active");
+       ht4.classList.add("active");
+       ht5.classList.add("active");
+     }
+     else if (hour2 == "5") {
+       ht1.classList.add("active");
+       ht3.classList.add("active");
+       ht4.classList.add("active");
+       ht5.classList.add("active");
+       ht7.classList.add("active");
+     }
+     else if (hour2 == "6") {
+       ht1.classList.add("active");
+       ht3.classList.add("active");
+       ht4.classList.add("active");
+       ht6.classList.add("active");
+       ht7.classList.add("active");
+       ht5.classList.add("active");
+     }
+     else if (hour2 == "7") {
+       ht1.classList.add("active");
+       ht2.classList.add("active");
+       ht5.classList.add("active");
+     }
+     else if (hour2 == "8") {
+       ht1.classList.add("active");
+       ht2.classList.add("active");
+       ht3.classList.add("active");
+       ht4.classList.add("active");
+       ht5.classList.add("active");
+       ht6.classList.add("active");
+       ht7.classList.add("active");
+     }
+     else if (hour2 == "9") {
+       ht1.classList.add("active");
+       ht2.classList.add("active");
+       ht3.classList.add("active");
+       ht4.classList.add("active");
+       ht5.classList.add("active");
+       ht7.classList.add("active");
+     }
+   }
+   setHourTwo();
+
+     function setMinuteOne (){
+     if (minute1 == "" || minute1 == "0") {
+       mo2.classList.add("active");
+       mo3.classList.add("active");
+       mo1.classList.add("active");
+       mo5.classList.add("active");
+       mo6.classList.add("active");
+       mo7.classList.add("active");
+     }
+     else if (minute1 == "1") {
+       mo2.classList.add("active");
+       mo5.classList.add("active");
+     }
+     else if (minute1 == "2") {
+       mo1.classList.add("active");
+       mo2.classList.add("active");
+       mo4.classList.add("active");
+       mo6.classList.add("active");
+       mo7.classList.add("active");
+     }
+     else if (minute1 == "3") {
+       mo1.classList.add("active");
+       mo2.classList.add("active");
+       mo4.classList.add("active");
+       mo5.classList.add("active");
+       mo7.classList.add("active");
+     }
+     else if (minute1 == "4") {
+       mo3.classList.add("active");
+       mo2.classList.add("active");
+       mo4.classList.add("active");
+       mo5.classList.add("active");
+     }
+     else if (minute1 == "5") {
+       mo1.classList.add("active");
+       mo3.classList.add("active");
+       mo4.classList.add("active");
+       mo5.classList.add("active");
+       mo7.classList.add("active");
+     }
+     else if (minute1 == "6") {
+       mo1.classList.add("active");
+       mo3.classList.add("active");
+       mo4.classList.add("active");
+       mo6.classList.add("active");
+       mo7.classList.add("active");
+       mo5.classList.add("active");
+     }
+     else if (minute1 == "7") {
+       mo1.classList.add("active");
+       mo2.classList.add("active");
+       mo5.classList.add("active");
+     }
+     else if (minute1 == "8") {
+       mo1.classList.add("active");
+       mo2.classList.add("active");
+       mo3.classList.add("active");
+       mo4.classList.add("active");
+       mo5.classList.add("active");
+       mo6.classList.add("active");
+       mo7.classList.add("active");
+     }
+     else if (minute1 == "9") {
+       mo1.classList.add("active");
+       mo2.classList.add("active");
+       mo3.classList.add("active");
+       mo4.classList.add("active");
+       mo5.classList.add("active");
+       mo7.classList.add("active");
+     }
+   }
+   setMinuteOne();
+
+     function setMinuteTwo (){
+     if (minute2 == "" || minute2 == "0") {
+       mt2.classList.add("active");
+       mt3.classList.add("active");
+       mt1.classList.add("active");
+       mt5.classList.add("active");
+       mt6.classList.add("active");
+       mt7.classList.add("active");
+     }
+     else if (minute2 == "1") {
+       mt2.classList.add("active");
+       mt5.classList.add("active");
+     }
+     else if (minute2 == "2") {
+       mt1.classList.add("active");
+       mt2.classList.add("active");
+       mt4.classList.add("active");
+       mt6.classList.add("active");
+       mt7.classList.add("active");
+     }
+     else if (minute2 == "3") {
+       mt1.classList.add("active");
+       mt2.classList.add("active");
+       mt4.classList.add("active");
+       mt5.classList.add("active");
+       mt7.classList.add("active");
+     }
+     else if (minute2 == "4") {
+       mt3.classList.add("active");
+       mt2.classList.add("active");
+       mt4.classList.add("active");
+       mt5.classList.add("active");
+     }
+     else if (minute2 == "5") {
+       mt1.classList.add("active");
+       mt3.classList.add("active");
+       mt4.classList.add("active");
+       mt5.classList.add("active");
+       mt7.classList.add("active");
+     }
+     else if (minute2 == "6") {
+       mt1.classList.add("active");
+       mt3.classList.add("active");
+       mt4.classList.add("active");
+       mt6.classList.add("active");
+       mt7.classList.add("active");
+       mt5.classList.add("active");
+     }
+     else if (minute2 == "7") {
+       mt1.classList.add("active");
+       mt2.classList.add("active");
+       mt5.classList.add("active");
+     }
+     else if (minute2 == "8") {
+       mt1.classList.add("active");
+       mt2.classList.add("active");
+       mt3.classList.add("active");
+       mt4.classList.add("active");
+       mt5.classList.add("active");
+       mt6.classList.add("active");
+       mt7.classList.add("active");
+     }
+     else if (minute2 == "9") {
+       mt1.classList.add("active");
+       mt2.classList.add("active");
+       mt3.classList.add("active");
+       mt4.classList.add("active");
+       mt5.classList.add("active");
+       mt7.classList.add("active");
+     }
+   }
+   setMinuteTwo();
+
+     function setSecondOne (){
+     if (second1 == "" || second1 == "0") {
+       so2.classList.add("active");
+       so3.classList.add("active");
+       so1.classList.add("active");
+       so5.classList.add("active");
+       so6.classList.add("active");
+       so7.classList.add("active");
+     }
+     else if (second1 == "1") {
+       so2.classList.add("active");
+       so5.classList.add("active");
+     }
+     else if (second1 == "2") {
+       so1.classList.add("active");
+       so2.classList.add("active");
+       so4.classList.add("active");
+       so6.classList.add("active");
+       so7.classList.add("active");
+     }
+     else if (second1 == "3") {
+       so1.classList.add("active");
+       so2.classList.add("active");
+       so4.classList.add("active");
+       so5.classList.add("active");
+       so7.classList.add("active");
+     }
+     else if (second1 == "4") {
+       so3.classList.add("active");
+       so2.classList.add("active");
+       so4.classList.add("active");
+       so5.classList.add("active");
+     }
+     else if (second1 == "5") {
+       so1.classList.add("active");
+       so3.classList.add("active");
+       so4.classList.add("active");
+       so5.classList.add("active");
+       so7.classList.add("active");
+     }
+     else if (second1 == "6") {
+       so1.classList.add("active");
+       so3.classList.add("active");
+       so4.classList.add("active");
+       so6.classList.add("active");
+       so7.classList.add("active");
+       so5.classList.add("active");
+     }
+     else if (second1 == "7") {
+       so1.classList.add("active");
+       so2.classList.add("active");
+       so5.classList.add("active");
+     }
+     else if (second1 == "8") {
+       so1.classList.add("active");
+       so2.classList.add("active");
+       so3.classList.add("active");
+       so4.classList.add("active");
+       so5.classList.add("active");
+       so6.classList.add("active");
+       so7.classList.add("active");
+     }
+     else if (second1 == "9") {
+       so1.classList.add("active");
+       so2.classList.add("active");
+       so3.classList.add("active");
+       so4.classList.add("active");
+       so5.classList.add("active");
+       so7.classList.add("active");
+     }
+   }
+   setSecondOne();
+
+     function setSecondTwo (){
+     if (second2 == "" || second2 == "0") {
+       st1.classList.add("active");
+       st2.classList.add("active");
+       st3.classList.add("active");
+       st5.classList.add("active");
+       st6.classList.add("active");
+       st7.classList.add("active");
+     }
+     else if (second2 == "1") {
+       st2.classList.add("active");
+       st5.classList.add("active");
+     }
+     else if (second2 == "2") {
+       st1.classList.add("active");
+       st2.classList.add("active");
+       st4.classList.add("active");
+       st6.classList.add("active");
+       st7.classList.add("active");
+     }
+     else if (second2 == "3") {
+       st1.classList.add("active");
+       st2.classList.add("active");
+       st4.classList.add("active");
+       st5.classList.add("active");
+       st7.classList.add("active");
+     }
+     else if (second2 == "4") {
+       st3.classList.add("active");
+       st2.classList.add("active");
+       st4.classList.add("active");
+       st5.classList.add("active");
+     }
+     else if (second2 == "5") {
+       st1.classList.add("active");
+       st3.classList.add("active");
+       st4.classList.add("active");
+       st5.classList.add("active");
+       st7.classList.add("active");
+     }
+     else if (second2 == "6") {
+       st1.classList.add("active");
+       st3.classList.add("active");
+       st4.classList.add("active");
+       st6.classList.add("active");
+       st7.classList.add("active");
+       st5.classList.add("active");
+     }
+     else if (second2 == "7") {
+       st1.classList.add("active");
+       st2.classList.add("active");
+       st5.classList.add("active");
+     }
+     else if (second2 == "8") {
+       st1.classList.add("active");
+       st2.classList.add("active");
+       st3.classList.add("active");
+       st4.classList.add("active");
+       st5.classList.add("active");
+       st6.classList.add("active");
+       st7.classList.add("active");
+     }
+     else if (second2 == "9") {
+       st1.classList.add("active");
+       st2.classList.add("active");
+       st3.classList.add("active");
+       st4.classList.add("active");
+       st5.classList.add("active");
+       st7.classList.add("active");
+     }
+   }
+   setSecondTwo();
+
+   }, 1000);
+
+
+
+   
+
+ 
+ 
+ </script>
+
+ 
+</body>
+</html>
